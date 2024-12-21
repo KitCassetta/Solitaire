@@ -4,7 +4,6 @@ Solitaire clone.
 from typing import Optional
 
 import random
-
 import arcade
 
 # Screen title and size
@@ -169,12 +168,9 @@ class MyGame(arcade.Window):
 
         # Create every card
         for card_suit in CARD_SUITS:
-
             for card_value in CARD_VALUES:
                 card = Card(card_suit, card_value, CARD_SCALE)
-
                 card.position = START_X, BOTTOM_Y
-
                 self.card_list.append(card)
 
         # Shuffle the cards
@@ -239,6 +235,7 @@ class MyGame(arcade.Window):
 
         # Have we clicked on a card?
         if len(cards) > 0:
+
             # Might be a stack of cards, get the top one
             primary_card = cards[-1]
             assert isinstance(primary_card, Card)
@@ -322,7 +319,8 @@ class MyGame(arcade.Window):
         self.remove_card_from_pile(card)
         self.piles[pile_index].append(card)
 
-    def on_mouse_release(self, x: float, y: float, button: int, modifiers: int):
+    def on_mouse_release(self, x: float, y: float, button: int,
+                         modifiers: int):
         """ Called when the user presses a mouse button. """
 
         # If we don't have any cards, who cares
@@ -341,9 +339,9 @@ class MyGame(arcade.Window):
 
             #  Is it the same pile we came from?
             if pile_index == self.get_pile_for_card(self.held_cards[0]):
-
                 # If so, who cares. We'll just reset our position.
                 pass
+
             # Is it on a middle play pile?
             elif PLAY_PILE_1 <= pile_index <= PLAY_PILE_7:
                 # Are there already cards there?
